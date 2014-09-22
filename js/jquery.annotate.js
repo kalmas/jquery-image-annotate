@@ -19,6 +19,7 @@
         this.editable = opts.editable;
         this.useAjax = opts.useAjax;
         this.notes = opts.notes;
+        this.textFields = opts.textFields;
 
         // Add the canvas
         this.canvas = $('<div class="image-annotate-canvas"><div class="image-annotate-view"></div><div class="image-annotate-edit"><div class="image-annotate-edit-area"></div></div></div>');
@@ -79,7 +80,8 @@
         deleteUrl: 'your-delete.rails',
         editable: true,
         useAjax: true,
-        notes: new Array()
+        notes: new Array(),
+        textFields: new Array()
     };
 
     $.fn.annotateImage.clear = function(image) {
@@ -240,7 +242,14 @@
         image.canvas.children('.image-annotate-edit').show();
 
         // Add the note (which we'll load with the form afterwards)
-        var form = $('<div id="image-annotate-edit-form"><form><textarea id="image-annotate-text" name="text" rows="3" cols="30">' + this.note.text + '</textarea></form></div>');
+        var formMarkup = '<div id="image-annotate-edit-form"><form>';
+        image.textFields.forEach(function (fieldName) {
+            formMarkup = formMarkup + '<label for="' + fieldName + '">' + fieldName + '</label>';
+            formMarkup = formMarkup + '<input type="text" id="' + fieldName + '" name="' + fieldName + '" /><br />';
+        });
+        formMarkup = formMarkup + '</form></div>';
+
+        var form = $(formMarkup);
         this.form = form;
 
         $('body').append(this.form);
