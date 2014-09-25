@@ -147,7 +147,12 @@
 
         ok.click(function() {
             var form = $('#image-annotate-edit-form form');
-            var text = $('#image-annotate-text').val();
+            var fields = {};
+
+            image.textFields.forEach(function (fieldName) {
+                fields[fieldName] = form.find('input[name="' + fieldName + '"]').val();
+            });
+
             $.fn.annotateImage.appendPosition(form, editable)
             image.mode = 'view';
 
@@ -168,11 +173,11 @@
 
             // Add to canvas
             if (note) {
-                note.resetPosition(editable, text);
+                note.resetPosition(editable, fields);
             } else {
                 editable.note.editable = true;
                 note = new $.fn.annotateView(image, editable.note)
-                note.resetPosition(editable, text);
+                note.resetPosition(editable, fields);
                 image.notes.push(editable.note);
             }
 
@@ -225,7 +230,7 @@
             newNote.left = 30;
             newNote.width = 30;
             newNote.height = 30;
-            newNote.text = "";
+            newNote.fields = {};
             this.note = newNote;
         }
 
@@ -244,8 +249,14 @@
         // Add the note (which we'll load with the form afterwards)
         var formMarkup = '<div id="image-annotate-edit-form"><form>';
         image.textFields.forEach(function (fieldName) {
-            formMarkup = formMarkup + '<label for="' + fieldName + '">' + fieldName + '</label>';
-            formMarkup = formMarkup + '<input type="text" id="' + fieldName + '" name="' + fieldName + '" /><br />';
+            var fieldValue = '';
+            if (note && note.fields[fieldName]) {
+                fieldValue = note.fields[fieldName];
+            }
+
+            formMarkup = formMarkup + '<label for="' + fieldName + '">' + fieldName + ': </label>';
+            formMarkup = formMarkup + '<input type="text" id="' + fieldName
+                + '" name="' + fieldName + '" value="' + fieldValue + '" /><br />';
         });
         formMarkup = formMarkup + '</form></div>';
 
@@ -425,11 +436,11 @@
         form.append(areaFields);
     }
 
-    $.fn.annotateView.prototype.resetPosition = function(editable, text) {
+    $.fn.annotateView.prototype.resetPosition = function(editable, fields) {
         ///	<summary>
         ///		Sets the position of an annotation.
         ///	</summary>
-        this.form.html(text);
+        this.form.html(fields);
         this.form.hide();
 
         // Resize
@@ -445,7 +456,7 @@
         this.note.left = editable.area.position().left;
         this.note.height = editable.area.height();
         this.note.width = editable.area.width();
-        this.note.text = text;
+        this.note.fields = fields;
         this.note.id = editable.note.id;
         this.editable = true;
     };
