@@ -20,6 +20,7 @@
         this.useAjax = opts.useAjax;
         this.notes = opts.notes;
         this.textFields = opts.textFields;
+        this.tipTemplate = opts.tipTemplate;
 
         // Add the canvas
         this.canvas = $('<div class="image-annotate-canvas"><div class="image-annotate-view"></div><div class="image-annotate-edit"><div class="image-annotate-edit-area"></div></div></div>');
@@ -81,7 +82,8 @@
         editable: true,
         useAjax: true,
         notes: new Array(),
-        textFields: new Array()
+        textFields: new Array(),
+        tipTemplate: ''
     };
 
     $.fn.annotateImage.clear = function(image) {
@@ -320,13 +322,13 @@
         this.area = $('<div class="image-annotate-area' + (this.editable ? ' image-annotate-area-editable' : '') + '"><div></div></div>');
         image.canvas.children('.image-annotate-view').prepend(this.area);
 
-        var tipString = '';
         // Add the note
-        image.textFields.forEach(function (fieldName) {
-            if (note.fields) {
-                tipString = tipString + note.fields[fieldName] + ' ';
-            }
-        });
+        var tipString = image.tipTemplate;
+        if (note.fields) {
+            image.textFields.forEach(function (fieldName) {
+                tipString = tipString.replace('{' + fieldName + '}', note.fields[fieldName]);
+            });
+        }
 
         this.form = $('<div class="image-annotate-note">' + tipString + '</div>');
         this.form.hide();
