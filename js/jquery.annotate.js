@@ -176,7 +176,8 @@
                 note.resetPosition(editable, fields);
             } else {
                 editable.note.editable = true;
-                note = new $.fn.annotateView(image, editable.note)
+                editable.note.fields = fields;
+                note = new $.fn.annotateView(image, editable.note);
                 note.resetPosition(editable, fields);
                 image.notes.push(editable.note);
             }
@@ -319,8 +320,15 @@
         this.area = $('<div class="image-annotate-area' + (this.editable ? ' image-annotate-area-editable' : '') + '"><div></div></div>');
         image.canvas.children('.image-annotate-view').prepend(this.area);
 
+        var tipString = '';
         // Add the note
-        this.form = $('<div class="image-annotate-note">' + note.text + '</div>');
+        image.textFields.forEach(function (fieldName) {
+            if (note.fields) {
+                tipString = tipString + note.fields[fieldName] + ' ';
+            }
+        });
+
+        this.form = $('<div class="image-annotate-note">' + tipString + '</div>');
         this.form.hide();
         image.canvas.children('.image-annotate-view').append(this.form);
         this.form.children('span.actions').hide();
@@ -440,7 +448,12 @@
         ///	<summary>
         ///		Sets the position of an annotation.
         ///	</summary>
-        this.form.html(fields);
+        
+        /* 
+         * I'm not sure why this was here, but it was breaking things so I
+         * commented it! 
+         */
+        // this.form.html(fields);
         this.form.hide();
 
         // Resize
