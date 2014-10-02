@@ -44,11 +44,11 @@
     cursor: pointer;
 }
 .image-annotate-area-editable-hover div {
-    border-color: #00AD00 !important;
+    border-color: #FCFC29 !important;
 }
 .image-annotate-note {
-    background: #E7FFE7 none repeat scroll 0 0;
-    border: solid 1px #397F39;
+    background: #FFF none repeat scroll 0 0;
+    border: solid 1px #FCFC29;
     color: #000;
     display: none;
     font-family: Verdana, Sans-Serif;
