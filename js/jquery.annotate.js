@@ -82,8 +82,8 @@
         editable: true,
         useAjax: true,
         notes: new Array(),
-        textFields: new Array(),
-        tipTemplate: ''
+        textFields: new Array('tipText'),
+        tipTemplate: '{tipText}'
     };
 
     $.fn.annotateImage.clear = function(image) {
