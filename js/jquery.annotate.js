@@ -19,6 +19,7 @@
         this.editable = opts.editable;
         this.useAjax = opts.useAjax;
         this.notes = opts.notes;
+        this.sortField = opts.sortField;
         this.textFields = opts.textFields;
         this.tipTemplate = opts.tipTemplate;
 
@@ -41,13 +42,13 @@
                 $(this).children('.image-annotate-view').show();
             }
         }, function() {
-            $(this).children('.image-annotate-view').hide();
+            // $(this).children('.image-annotate-view').hide();
         });
 
         this.canvas.children('.image-annotate-view').hover(function() {
             $(this).show();
         }, function() {
-            $(this).hide();
+            //$(this).hide();
         });
 
         // load the notes
@@ -82,6 +83,7 @@
         editable: true,
         useAjax: true,
         notes: new Array(),
+        sortField: undefined,
         textFields: new Array('tipText'),
         tipTemplate: '{tipText}'
     };
@@ -112,6 +114,18 @@
         ///		Loads the annotations from the notes property passed in on the
         ///     options object.
         ///	</summary>
+        if (image.sortField) {
+            image.notes.sort(function (a, b) { 
+                if (a.fields[image.sortField].toLowerCase() > b.fields[image.sortField].toLowerCase()) {
+                    return 1;
+                }
+                if (a.fields[image.sortField].toLowerCase() < b.fields[image.sortField].toLowerCase()) {
+                    return -1;
+                }
+                return 0;
+            });
+        }
+
         for (var i = 0; i < image.notes.length; i++) {
             image.notes[image.notes[i]] = new $.fn.annotateView(image, image.notes[i]);
         }
@@ -330,6 +344,9 @@
             });
         }
 
+        var listItem = $('<a href="#" class="list-group-item">' + tipString + '</a>');
+        $('#noteList').append(listItem);
+
         this.form = $('<div class="image-annotate-note">' + tipString + '</div>');
         this.form.hide();
         image.canvas.children('.image-annotate-view').append(this.form);
@@ -345,6 +362,15 @@
         }, function() {
             annotation.hide();
         });
+
+        listItem.hover(function() {
+            console.log('hello');
+            annotation.show();
+        }, function() {
+            annotation.hide();
+        });
+
+
 
         // Edit a note feature
         if (this.editable) {

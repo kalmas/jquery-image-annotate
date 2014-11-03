@@ -34,7 +34,7 @@
     position: absolute;
 }
 .image-annotate-area div {
-    border: 1px solid #FFFFFF;
+    border: 1px solid;
     display: block;
 }
 .image-annotate-area-hover div {
