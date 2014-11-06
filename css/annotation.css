@@ -1,3 +1,35 @@
+.wrapper
+{
+    width: 100%;
+    height: 300px;
+}
+
+.left
+{
+    width:80%;
+    float: left;
+}
+
+.right
+{
+    width:20%;
+    float: right;
+}
+
+.scrollin
+{
+    overflow: hidden;
+}
+.scrollin:hover
+{
+    overflow: auto;
+}
+
+
+
+
+
+
 .image-annotate-add {
     background: #fff url(../images/asterisk_yellow.png) no-repeat 3px 3px;
     border: solid 1px #ccc !important;
