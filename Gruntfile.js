@@ -46,14 +46,6 @@ module.exports = function(grunt) {
       }
     },
 
-    concat: {
-      options: {},
-      dist: {
-        src: ['dist/js/jquery.min.js', 'dist/js/jquery-ui.min.js', 'dist/js/jquery.annotate.min.js'],
-        dest: 'dist/js/jquery.annotate.concat.min.js',
-      },
-    },
-
     cssmin: {
       dist: {
         files: {
@@ -69,7 +61,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'copy',
     'uglify',
-    'concat',
     'cssmin'
   ]);
 
