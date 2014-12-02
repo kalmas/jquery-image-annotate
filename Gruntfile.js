@@ -4,11 +4,19 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
+  // Rename method used throughout to change x.js and y.css to x.min.js and y.min.css.
+  var rename = function(dest, src) {
+    return dest + '/' + src.replace(/\.(\w+)$/i, '.min.$1');
+  };
+
   grunt.initConfig({
 
+    /*
+     * Copy files.
+     */
     copy: {
 
-      // For deving. Copy unaltered resources into dist directory.
+      // For development: copy unaltered resources into dist directory.
       dev: {
         files: [
           // JS files.
@@ -20,10 +28,7 @@ module.exports = function(grunt) {
             src: [
               'js/*.js'
             ],
-            rename: function(dest, src) {
-              // Rename to match HTML references.
-              return dest + '/' + src.replace(/\.js$/i, '.min.js');
-            }
+            rename: rename
           },
           // CSS files.
           {
@@ -34,15 +39,12 @@ module.exports = function(grunt) {
             src: [
               'css/*.css'
             ],
-            rename: function(dest, src) {
-              // Rename to match HTML references.
-              return dest + '/' +src.replace(/\.css$/i, '.min.css');
-            }
+            rename: rename
           }
         ]
       },
 
-      // For distribution. Resources that don't get changed.
+      // For distribution: copy resources that don't get compiled.
       dist: {
         files: [
           // Vendor JS.
@@ -84,10 +86,13 @@ module.exports = function(grunt) {
       }
     },
 
+    /*
+     * Minify JS. 
+     */
     uglify: {
       options: {
+        // Rename variables except for jQuery.
         mangle: {
-          // Don't rename jQuery.
           except: [
             'jQuery',
             '$'
@@ -95,28 +100,39 @@ module.exports = function(grunt) {
         }
       },
 
-      // Minimize JS for distribution.
+      // Minify all js files in ./js and copy to ./public/dist.
       dist: {
-        files: {
-          'public/dist/js/jquery.annotate.min.js': ['js/jquery.annotate.js']
-        }
+        files: grunt.file.expandMapping(['js/*.js'], 'public/dist/js/', {
+          expand: true,
+          flatten: true,
+          rename: rename
+        })
       }
     },
 
+    /*
+     * Minify CSS. 
+     */
     cssmin: {
 
-      // Minimize CSS for distribution.
+      // Minify all css files in ./css and copy to ./public/dist.
       dist: {
-        files: {
-          'public/dist/css/annotate.min.css': ['css/annotation.css']
-        }
+        files: grunt.file.expandMapping(['css/*.css'], 'public/dist/css/', {
+          expand: true,
+          flatten: true,
+          rename: rename
+        })
       }
     },
 
-    // Empty the dist dir.
+    /*
+     * Delete distribution files.
+     */
     clean: ['public/dist'],
 
-    // Watch for changes while deving.
+    /*
+     * Watch for changes while developing.
+     */
     watch: {
       scripts: {
         files: ['css/*.css', 'js/*.js'],
