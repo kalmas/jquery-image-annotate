@@ -7,8 +7,31 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     copy: {
+      dev: {
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            cwd: '',
+            dest: 'dist/js',
+            src: [
+              'js/*.js'
+            ]
+          },
+          {
+            expand: true,
+            flatten: true,
+            cwd: '',
+            dest: 'dist/css',
+            src: [
+              'css/*.css'
+            ]
+          }
+        ]
+      },
       dist: {
-        files: [{
+        files: [
+          {
             expand: true,
             flatten: true,
             cwd: '',
@@ -17,7 +40,8 @@ module.exports = function(grunt) {
               'bower_components/jquery/dist/jquery.min.js',
               'bower_components/jquery-ui/jquery-ui.min.js'
             ]
-          }, {
+          }, 
+          {
             expand: true,
             flatten: true,
             cwd: '',
@@ -36,7 +60,10 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         mangle: {
-          except: ['jQuery', '$']
+          except: [
+            'jQuery',
+            '$'
+          ]
         }
       },
       dist: {
@@ -54,12 +81,29 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: ['dist']
+    clean: ['dist'],
+
+    watch: {
+      scripts: {
+        files: ['css/*.css', 'js/*.js'],
+        tasks: ['copy:dev'],
+        options: {
+          spawn: false,
+        },
+      }
+    }
 
   });
 
+  grunt.registerTask('dev', [
+    'clean',
+    'copy:dist'
+    'watch'
+  ]);
+
   grunt.registerTask('default', [
-    'copy',
+    'clean',
+    'copy:dist',
     'uglify',
     'cssmin'
   ]);
