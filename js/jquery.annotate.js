@@ -364,7 +364,6 @@
         });
 
         listItem.hover(function() {
-            console.log('hello');
             annotation.show();
         }, function() {
             annotation.hide();
