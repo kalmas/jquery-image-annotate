@@ -91,7 +91,7 @@
     $.fn.annotateImage.clear = function(image) {
         ///	<summary>
         ///		Clears all existing annotations from the image.
-        ///	</summary>    
+        ///	</summary>
         for (var i = 0; i < image.notes.length; i++) {
             image.notes[image.notes[i]].destroy();
         }
@@ -115,7 +115,7 @@
         ///     options object.
         ///	</summary>
         if (image.sortField) {
-            image.notes.sort(function (a, b) { 
+            image.notes.sort(function (a, b) {
                 if (a.fields[image.sortField].toLowerCase() > b.fields[image.sortField].toLowerCase()) {
                     return 1;
                 }
@@ -135,7 +135,7 @@
         ///	<summary>
         ///		Gets a count og the ticks for the current date.
         ///     This is used to ensure that URLs are always unique and not cached by the browser.
-        ///	</summary>        
+        ///	</summary>
         var now = new Date();
         return now.getTime();
     };
@@ -143,7 +143,7 @@
     $.fn.annotateImage.add = function(image) {
         ///	<summary>
         ///		Adds a note to the image.
-        ///	</summary>        
+        ///	</summary>
         if (image.mode == 'view') {
             image.mode = 'edit';
 
@@ -311,7 +311,7 @@
     $.fn.annotateEdit.prototype.destroy = function() {
         ///	<summary>
         ///		Destroys an editable annotation area.
-        ///	</summary>        
+        ///	</summary>
         this.image.canvas.children('.image-annotate-edit').hide();
         this.area.resizable('destroy');
         this.area.draggable('destroy');
@@ -338,13 +338,20 @@
 
         // Add the note
         var tipString = image.tipTemplate;
+        var url = '#'
         if (note.fields) {
             image.textFields.forEach(function (fieldName) {
                 tipString = tipString.replace('{' + fieldName + '}', note.fields[fieldName]);
             });
+
+            if (note.fields.url) {
+              url = note.fields.url;
+            }
         }
 
-        var listItem = $('<a href="#" class="list-group-item">' + tipString + '</a>');
+
+
+        var listItem = $('<a href="' + url + '" class="list-group-item">' + tipString + '</a>');
         $('#noteList').append(listItem);
 
         this.form = $('<div class="image-annotate-note">' + tipString + '</div>');
@@ -407,7 +414,7 @@
     $.fn.annotateView.prototype.hide = function() {
         ///	<summary>
         ///		Removes the highlight from the annotation.
-        ///	</summary>      
+        ///	</summary>
         this.form.fadeOut(250);
         this.area.removeClass('image-annotate-area-hover');
         this.area.removeClass('image-annotate-area-editable-hover');
@@ -416,7 +423,7 @@
     $.fn.annotateView.prototype.destroy = function() {
         ///	<summary>
         ///		Destroys the annotation.
-        ///	</summary>      
+        ///	</summary>
         this.area.remove();
         this.form.remove();
     }
@@ -424,7 +431,7 @@
     $.fn.annotateView.prototype.edit = function() {
         ///	<summary>
         ///		Edits the annotation.
-        ///	</summary>      
+        ///	</summary>
         if (this.image.mode == 'view') {
             this.image.mode = 'edit';
             var annotation = this;
@@ -475,10 +482,10 @@
         ///	<summary>
         ///		Sets the position of an annotation.
         ///	</summary>
-        
-        /* 
+
+        /*
          * I'm not sure why this was here, but it was breaking things so I
-         * commented it! 
+         * commented it!
          */
         // this.form.html(fields);
         this.form.hide();

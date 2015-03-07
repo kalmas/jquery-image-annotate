@@ -1,35 +1,3 @@
-.wrapper
-{
-    width: 100%;
-    height: 300px;
-}
-
-.left
-{
-    width:80%;
-    float: left;
-}
-
-.right
-{
-    width:20%;
-    float: right;
-}
-
-.scrollin
-{
-    overflow: hidden;
-}
-.scrollin:hover
-{
-    overflow: auto;
-}
-
-
-
-
-
-
 .image-annotate-add {
     background: #fff url(../images/asterisk_yellow.png) no-repeat 3px 3px;
     border: solid 1px #ccc !important;
@@ -38,9 +6,9 @@
     display: block;
     float: left;
     font-family: Verdana, Sans-Serif;
-    font-size: 12px;    
+    font-size: 12px;
     height: 18px;
-    line-height: 18px;    
+    line-height: 18px;
     padding: 2px 0 2px 24px;
     margin: 5px 0;
     width: 64px;
@@ -118,7 +86,7 @@
 #image-annotate-edit-form textarea {
     height: 50px;
     font-family: Verdana, Sans-Serif;
-    font-size: 12px;    
+    font-size: 12px;
     width: 248px;
 }
 #image-annotate-edit-form fieldset {
@@ -138,9 +106,9 @@
     color: #333;
     cursor: pointer;
     display: block;
-    float: left;    
+    float: left;
     font-family: Verdana, Sans-Serif;
-    font-size: 12px;        
+    font-size: 12px;
     height: 18px;
     line-height: 18px;
     padding: 2px 0 2px 24px;

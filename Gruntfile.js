@@ -55,6 +55,7 @@ module.exports = function(grunt) {
             dest: 'public/dist/js',
             src: [
               'bower_components/jquery/dist/jquery.min.js',
+              'bower_components/jquery/dist/jquery.min.map',
               'bower_components/jquery-ui/jquery-ui.min.js',
               'bower_components/bootstrap/dist/js/bootstrap.min.js'
             ]
@@ -66,7 +67,8 @@ module.exports = function(grunt) {
             cwd: '',
             dest: 'public/dist/css',
             src: [
-              'bower_components/bootstrap/dist/css/bootstrap.min.css'
+              'bower_components/bootstrap/dist/css/bootstrap.min.css',
+              'bower_components/normalize.css/normalize.css'
             ]
           },
           // Images.
@@ -87,7 +89,7 @@ module.exports = function(grunt) {
     },
 
     /*
-     * Minify JS. 
+     * Minify JS.
      */
     uglify: {
       options: {
@@ -111,7 +113,7 @@ module.exports = function(grunt) {
     },
 
     /*
-     * Minify CSS. 
+     * Minify CSS.
      */
     cssmin: {
 

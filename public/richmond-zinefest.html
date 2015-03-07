@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Image Annotations</title>
+    <style type="text/css" media="all">
+        @import"dist/css/normalize.css";
+        @import"dist/css/annotation.min.css";
+        @import"dist/css/bootstrap.min.css";
+    </style>
+    <script type="text/javascript" src="dist/js/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="dist/js/jquery.annotate.min.js"></script>
+    <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/richmond-zinefest.js"></script>
+
+    <style>
+      body
+      {
+        /*overflow:hidden;*/
+      }
+
+      #left
+      {
+        width:80%;
+        float: left;
+      }
+
+      #right
+      {
+        max-height:758px;
+        width:20%;
+        float:right;
+        overflow:hidden;
+      }
+
+      .scrollin
+      {
+
+      }
+
+      .scrollin:hover
+      {
+        /*overflow: auto;*/
+      }
+    </style>
+</head>
+
+<body>
+    <div id="left" class="scrollin">
+      <img id="toAnnotate" src="richmond-zinefest.jpg" alt="Richmond Zinefest"  />
+    </div>
+
+    <div id="right" class="scrollin">
+      <div id="noteList" class="list-group"></div>
+    </div>
+
+</body>
+
+</html>
