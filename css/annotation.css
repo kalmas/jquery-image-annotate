@@ -6,9 +6,9 @@
     display: block;
     float: left;
     font-family: Verdana, Sans-Serif;
-    font-size: 12px;    
+    font-size: 12px;
     height: 18px;
-    line-height: 18px;    
+    line-height: 18px;
     padding: 2px 0 2px 24px;
     margin: 5px 0;
     width: 64px;
@@ -34,7 +34,7 @@
     position: absolute;
 }
 .image-annotate-area div {
-    border: 1px solid #FFFFFF;
+    border: 1px solid;
     display: block;
 }
 .image-annotate-area-hover div {
@@ -44,11 +44,11 @@
     cursor: pointer;
 }
 .image-annotate-area-editable-hover div {
-    border-color: #00AD00 !important;
+    border-color: #FCFC29 !important;
 }
 .image-annotate-note {
-    background: #E7FFE7 none repeat scroll 0 0;
-    border: solid 1px #397F39;
+    background: #FFF none repeat scroll 0 0;
+    border: solid 1px #FCFC29;
     color: #000;
     display: none;
     font-family: Verdana, Sans-Serif;
@@ -67,7 +67,6 @@
 #image-annotate-edit-form {
     background: #FFFEE3 none repeat scroll 0 0;
     border: 1px solid #000000;
-    height: 78px;
     padding: 7px;
     position: absolute;
     width: 250px;
@@ -87,7 +86,7 @@
 #image-annotate-edit-form textarea {
     height: 50px;
     font-family: Verdana, Sans-Serif;
-    font-size: 12px;    
+    font-size: 12px;
     width: 248px;
 }
 #image-annotate-edit-form fieldset {
@@ -107,9 +106,9 @@
     color: #333;
     cursor: pointer;
     display: block;
-    float: left;    
+    float: left;
     font-family: Verdana, Sans-Serif;
-    font-size: 12px;        
+    font-size: 12px;
     height: 18px;
     line-height: 18px;
     padding: 2px 0 2px 24px;
