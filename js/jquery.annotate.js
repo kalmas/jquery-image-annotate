@@ -1,6 +1,23 @@
 /// <reference path="jquery-1.2.6-vsdoc.js" />
 (function($) {
 
+    /**
+     * Make a RFC4122 UUID.
+     * One of my favorite js hacks.
+     * Lifted from http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript.
+     *
+     * @return {String}
+     */
+    function guid() {
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+          s4() + '-' + s4() + s4() + s4();
+    }
+
     $.fn.annotateImage = function(options) {
         ///	<summary>
         ///		Creates annotations on the given image.
@@ -242,7 +259,7 @@
             this.note = note;
         } else {
             var newNote = new Object();
-            newNote.id = "new";
+            newNote.id = guid();
             newNote.top = 30;
             newNote.left = 30;
             newNote.width = 30;
