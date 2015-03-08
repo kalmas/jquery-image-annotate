@@ -342,6 +342,8 @@
             image.textFields.forEach(function (fieldName) {
                 tipString = tipString.replace('{' + fieldName + '}', note.fields[fieldName]);
             });
+        } else {
+          tipString = tipString.replace('{tipText}', note.text);
         }
 
         var listItem = $('<a href="#" class="list-group-item">' + tipString + '</a>');
