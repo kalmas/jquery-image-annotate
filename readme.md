@@ -8,7 +8,7 @@ Extract [this zip file] [7] into a directory on your web server and navigate to 
 
 ###Usage:
 
-To use the plugin you first need to reference the jQuery and jQuery UI libraries in your page. Add 
+To use the plugin you first need to reference the jQuery and jQuery UI libraries in your page. Add
 the `jquery.annotate.js` and `annotation.css` files to enable the plugin.
 
 	<style type="text/css" media="all">@import "css/annotation.css";</style>
@@ -23,26 +23,26 @@ Once you've added in the necessary scripts, hook up an image on the page by usin
 	    $("#toAnnotate").annotateImage({
 	      editable: true,
 	      useAjax: false,
-	      notes: [ { "top": 286, 
-	                 "left": 161, 
-	                 "width": 52, 
-	                 "height": 37, 
-	                 "text": "Small people on the steps", 
-	                 "id": "e69213d0-2eef-40fa-a04b-0ed998f9f1f5", 
+	      notes: [ { "top": 286,
+	                 "left": 161,
+	                 "width": 52,
+	                 "height": 37,
+	                 "text": "Small people on the steps",
+	                 "id": "e69213d0-2eef-40fa-a04b-0ed998f9f1f5",
 	                 "editable": false },
-	               { "top": 134, 
-	                 "left": 179, 
-	                 "width": 68, 
-	                 "height": 74, 
-	                 "text": "National Gallery Dome", 
-	                 "id": "e7f44ac5-bcf2-412d-b440-6dbb8b19ffbe", 
-	                 "editable": true } ]   
+	               { "top": 134,
+	                 "left": 179,
+	                 "width": 68,
+	                 "height": 74,
+	                 "text": "National Gallery Dome",
+	                 "id": "e7f44ac5-bcf2-412d-b440-6dbb8b19ffbe",
+	                 "editable": true } ]
 	    });
 	  });
 	</script>
 
-It is important to use the `$(function() { ... });`  function as this will fire once the page and 
-all it's images have loaded. Failing to do so will result in the plugin executing before the image 
+It is important to use the `$(function() { ... });`  function as this will fire once the page and
+all it's images have loaded. Failing to do so will result in the plugin executing before the image
 dimensions have been determined.
 
 The HTML markup for the page looks like this:
@@ -62,7 +62,7 @@ A copy of all this code is included in the release.
 
 ###Build:
 
-A minimized distribution of the plugin and required resources is available in ```dist/```. 
+A minimized distribution of the plugin and required resources is available in `dist/`.
 To rebuild yourself do:
 
 ```sh
@@ -74,7 +74,7 @@ grunt clean
 grunt
 ```
 
-```dist/js/jquery.annotate.concat.min.js``` includes all of the required javascript 
+`dist/js/jquery.annotate.concat.min.js` includes all of the required javascript
 minimized and concated into one file.
 
 ###History:
@@ -119,7 +119,7 @@ hunvreus@gmail.com
 FamFamFam Icons by:  
 Mark James  
 [http://www.famfamfam.com/] [5]  
-                                  
+
 
 Trafalgar Square image by:  
 Maurice  

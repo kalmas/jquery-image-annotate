@@ -8,16 +8,8 @@ module.exports = function(grunt) {
 
     copy: {
       dist: {
-        files: [{
-            expand: true,
-            flatten: true,
-            cwd: '',
-            dest: 'dist/js',
-            src: [
-              'bower_components/jquery/jquery.min.js',
-              'bower_components/jquery-ui/jquery-ui.min.js'
-            ]
-          }, {
+        files: [
+          {
             expand: true,
             flatten: true,
             cwd: '',
@@ -37,21 +29,16 @@ module.exports = function(grunt) {
       options: {
         mangle: {
           except: ['jQuery', '$']
-        }
+        },
+        sourceMap: true
       },
       dist: {
         files: {
+          'dist/js/jquery.min.js': ['bower_components/jquery/dist/jquery.js'],
+          'dist/js/jquery-ui.min.js': ['bower_components/jquery-ui/jquery-ui.js'],
           'dist/js/jquery.annotate.min.js': ['js/jquery.annotate.js']
         }
       }
-    },
-
-    concat: {
-      options: {},
-      dist: {
-        src: ['dist/js/jquery.min.js', 'dist/js/jquery-ui.min.js', 'dist/js/jquery.annotate.min.js'],
-        dest: 'dist/js/jquery.annotate.concat.min.js',
-      },
     },
 
     cssmin: {
@@ -67,9 +54,9 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', [
+    'clean',
     'copy',
     'uglify',
-    'concat',
     'cssmin'
   ]);
 
