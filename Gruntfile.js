@@ -44,6 +44,9 @@ module.exports = function(grunt) {
 
     cssmin: {
       dist: {
+        options: {
+          sourceMap: true
+        },
         files: {
           'dist/css/bootstrap.min.css': ['bower_components/bootstrap/dist/css/bootstrap.css'],
           'dist/css/annotate.min.css': ['css/annotation.css']
