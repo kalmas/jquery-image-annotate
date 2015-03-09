@@ -9,7 +9,7 @@ $(window).load(function() {
     tipTemplate: '<div><strong>{title}</strong></div><div>{author}</div><div>{notes}</div>',
     useAjax: false,
     notes: [{
-      "id": "new",
+      "id": "0",
       "top": 43,
       "left": 173,
       "width": 202,
@@ -22,7 +22,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "1",
       "top": 310,
       "left": 96,
       "width": 143,
@@ -35,7 +35,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "2",
       "top": 470,
       "left": 58,
       "width": 139,
@@ -48,7 +48,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "3",
       "top": 493,
       "left": 257,
       "width": 103,
@@ -61,7 +61,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "4",
       "top": 312,
       "left": 277,
       "width": 122,
@@ -74,7 +74,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "5",
       "top": 577,
       "left": 375,
       "width": 195,
@@ -87,7 +87,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "6",
       "top": 367,
       "left": 459,
       "width": 211,
@@ -100,7 +100,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "7",
       "top": 56,
       "left": 475,
       "width": 325,
@@ -113,7 +113,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "8",
       "top": 561,
       "left": 587,
       "width": 112,
@@ -126,7 +126,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "9",
       "top": 413,
       "left": 703,
       "width": 79,
@@ -139,7 +139,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "10",
       "top": 538,
       "left": 723,
       "width": 240,
@@ -152,7 +152,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "11",
       "top": 644,
       "left": 1003,
       "width": 112,
@@ -165,7 +165,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "12",
       "top": 521,
       "left": 987,
       "width": 74,
@@ -178,7 +178,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "13",
       "top": 423,
       "left": 945,
       "width": 78,
@@ -191,7 +191,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "14",
       "top": 419,
       "left": 810,
       "width": 107,
@@ -204,7 +204,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "15",
       "top": 486,
       "left": 1132,
       "width": 96,
@@ -217,7 +217,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "16",
       "top": 326,
       "left": 703,
       "width": 54,
@@ -230,7 +230,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "17",
       "top": 325,
       "left": 767,
       "width": 51,
@@ -243,7 +243,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "18",
       "top": 323,
       "left": 827,
       "width": 54,
@@ -256,7 +256,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "19",
       "top": 302,
       "left": 907,
       "width": 67,
@@ -269,7 +269,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "20",
       "top": 433,
       "left": 1042,
       "width": 54,
@@ -282,7 +282,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "21",
       "top": 297,
       "left": 1116,
       "width": 92,
@@ -295,7 +295,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "22",
       "top": 293,
       "left": 1005,
       "width": 80,
@@ -308,7 +308,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "23",
       "top": 136,
       "left": 851,
       "width": 94,
@@ -321,7 +321,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "24",
       "top": 141,
       "left": 974,
       "width": 94,
@@ -334,7 +334,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "25",
       "top": 142,
       "left": 1101,
       "width": 89,
@@ -347,7 +347,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "26",
       "top": 41,
       "left": 860,
       "width": 65,
@@ -360,7 +360,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "27",
       "top": 39,
       "left": 950,
       "width": 74,
@@ -373,7 +373,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "28",
       "top": 41,
       "left": 1042,
       "width": 71,
@@ -386,7 +386,7 @@ $(window).load(function() {
       },
       "editable": true
     }, {
-      "id": "new",
+      "id": "29",
       "top": 76,
       "left": 1146,
       "width": 34,

@@ -350,7 +350,7 @@
         this.editable = (note.editable && image.editable);
 
         // Add the area
-        this.area = $('<div class="image-annotate-area' + (this.editable ? ' image-annotate-area-editable' : '') + '"><div></div></div>');
+        this.area = $('<div id="' + note.id + '" class="image-annotate-area' + (this.editable ? ' image-annotate-area-editable' : '') + '"><div></div></div>');
         image.canvas.children('.image-annotate-view').prepend(this.area);
 
         // Add the note
@@ -363,7 +363,7 @@
           tipString = tipString.replace('{tipText}', note.text);
         }
 
-        var listItem = $('<a href="#" class="list-group-item">' + tipString + '</a>');
+        var listItem = $('<a href="#" id="link' + note.id + '" data-id="' + note.id + '" class="list-group-item">' + tipString + '</a>');
         $('#noteList').append(listItem);
 
         this.form = $('<div class="image-annotate-note">' + tipString + '</div>');
@@ -378,8 +378,15 @@
         var annotation = this;
         this.area.hover(function() {
             annotation.show();
+            listItem.addClass('selected');
         }, function() {
             annotation.hide();
+            listItem.removeClass('selected');
+        });
+        
+        this.area.click(function() {
+            var id = 'link' + $(annotation.area).attr('id');
+            document.getElementById(id).scrollIntoView();
         });
 
         listItem.hover(function() {
@@ -387,8 +394,11 @@
         }, function() {
             annotation.hide();
         });
-
-
+        
+        listItem.click(function() {
+            var id = $(annotation.area).attr('id');
+            document.getElementById(id).scrollIntoView();
+        });
 
         // Edit a note feature
         if (this.editable) {
@@ -420,6 +430,9 @@
             this.area.addClass('image-annotate-area-hover');
         } else {
             this.area.addClass('image-annotate-area-editable-hover');
+        }
+        if (this.form.data('id') !== 'undefined') {
+            
         }
     };
 

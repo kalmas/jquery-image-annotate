@@ -210,3 +210,23 @@
     right: -5px;
     top: -5px;
 }
+
+#left {
+    float: left;
+    width: 75vw;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+#right {
+    float: right;
+    width: 25vw;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.selected {
+    background-color: #f5f5f5;
+    color: #555;
+    text-decoration: none;
+}
