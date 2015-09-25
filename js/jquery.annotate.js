@@ -357,13 +357,16 @@
         var tipString = image.tipTemplate;
         if (note.fields) {
             image.textFields.forEach(function (fieldName) {
-                tipString = tipString.replace('{' + fieldName + '}', note.fields[fieldName]);
+                tipString = tipString.replace('{' + fieldName + '}', note.fields[fieldName])
+                    .replace('{noteId}', note.id);
             });
         } else {
-          tipString = tipString.replace('{tipText}', note.text);
+            tipString = tipString.replace('{tipText}', note.text);
         }
 
-        var listItem = $('<a href="#" id="link' + note.id + '" data-id="' + note.id + '" class="list-group-item">' + tipString + '</a>');
+        var listItem = $('<a href="' + note.fields['url'] + '" id="link' + note.id
+            + '" data-id="' + note.id + '" class="list-group-item">' + tipString 
+            + '<div style="font-size:x-small">' + note.fields['url'] + '</div></a>');
         $('#noteList').append(listItem);
 
         this.form = $('<div class="image-annotate-note">' + tipString + '</div>');
@@ -384,7 +387,7 @@
             listItem.removeClass('selected');
         });
         
-        this.area.click(function() {
+        this.area.hover(function() {
             var id = 'link' + $(annotation.area).attr('id');
             document.getElementById(id).scrollIntoView();
         });
@@ -395,7 +398,7 @@
             annotation.hide();
         });
         
-        listItem.click(function() {
+        listItem.hover(function() {
             var id = $(annotation.area).attr('id');
             document.getElementById(id).scrollIntoView();
         });
