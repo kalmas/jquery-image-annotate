@@ -387,10 +387,10 @@
             listItem.removeClass('selected');
         });
         
-        this.area.hover(function() {
-            var id = 'link' + $(annotation.area).attr('id');
-            document.getElementById(id).scrollIntoView();
-        });
+        // this.area.click(function() {
+        //     var id = 'link' + $(annotation.area).attr('id');
+        //     document.getElementById(id).scrollIntoView();
+        // });
 
         listItem.hover(function() {
             annotation.show();
